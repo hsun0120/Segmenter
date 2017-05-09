@@ -51,6 +51,8 @@ Temporary Items
 /bin/
 /segmented/
 /source/
+/NewsOutput/
+/NewsSegmented/
 .classpath
 .gitattributes
 .project
