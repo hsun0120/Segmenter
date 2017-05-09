@@ -10,8 +10,6 @@ import java.util.Scanner;
 
 import org.json.JSONArray;
 
-import com.hankcs.hanlp.seg.Segment;
-import com.hankcs.hanlp.seg.CRF.CRFSegment;
 import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
 
@@ -19,8 +17,6 @@ public class NewsSegmenter {
 static final String DELI = "(?<=]})"; //File delimiter
   
   public static void main (String[] args) {
-    Segment segment = new CRFSegment();
-    segment.enablePartOfSpeechTagging(false);
     File folder = new File(args[0]);
     String[] fileList = folder.list(); //Get all the files of the source folder
 
