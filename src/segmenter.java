@@ -29,14 +29,10 @@ public class segmenter {
     String[] fileList = folder.list(); //Get all the files of the source folder
     
     ArrayList<String> fields = new ArrayList<>();
-    fields.add("$.parties.*");
-    fields.add("$.laws_full.*");
-    fields.add("$.holding.*");
-    fields.add("$.facts.*");
-    fields.add("$.decision.*");
-    fields.add("$.citations.*");
+    fields.add("$.content");
 
     Scanner sc;
+    long start = System.nanoTime();
     for(int i = 0; i < fileList.length; i++) {
       try {
         sc = new Scanner(new FileInputStream(args[0] + "/" + fileList[i]), 
@@ -66,5 +62,7 @@ public class segmenter {
         e.printStackTrace();
       }
     }
+    long end = System.nanoTime();
+    System.out.println(end - start);
   }
 }
