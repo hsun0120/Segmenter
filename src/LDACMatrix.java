@@ -21,7 +21,8 @@ public class LDACMatrix {
 		this.vocab = new HashSet<>();
 	}
 	
-	public void populateVocab(String[]fileList,  String inDir) {
+	public void populateVocab(String[]fileList,  String inDir,
+			String vocabName) {
 		  for(int i = 0; i < fileList.length; i++) {
 			  try {
 				  Scanner sc = new Scanner(new FileInputStream(inDir + "/" + fileList[i]), 
@@ -37,7 +38,7 @@ public class LDACMatrix {
 		  /* Output vocabularies */
 		  try {
 			PrintWriter writer = new PrintWriter(new OutputStreamWriter(new
-					  FileOutputStream("vocab.txt"), 
+					  FileOutputStream(vocabName), 
 					  StandardCharsets.UTF_8.toString()));
 			Iterator<String> it = vocab.iterator();
 			while(it.hasNext()) {
@@ -50,7 +51,8 @@ public class LDACMatrix {
 		}
 	}
 	
-	public void getMatrix(String[]fileList,  String inDir, String vocabName) {
+	public void getMatrix(String[]fileList,  String inDir, String vocabName,
+			String matName) {
 		HashMap<String, Integer> map = new HashMap<>();
 		try {
 			Scanner vocSc = new Scanner(new FileInputStream(vocabName), 
@@ -86,7 +88,7 @@ public class LDACMatrix {
 		/* Output dtm */
 		  try {
 			PrintWriter writer = new PrintWriter(new OutputStreamWriter(new
-					  FileOutputStream("mat.ldac"), 
+					  FileOutputStream(matName), 
 					  StandardCharsets.UTF_8.toString()));
 			for(int i = 0; i < list.size(); i++) {
 				HashMap<String, Integer> locMap = list.get(i);
@@ -112,7 +114,7 @@ public class LDACMatrix {
 	    File folder = new File(args[0]);
 	    String[] fileList = folder.list(); //Get all the files of the source folder
 	    LDACMatrix ldac = new LDACMatrix();
-	    ldac.populateVocab(fileList, args[0]);
-	    ldac.getMatrix(fileList, args[0], args[1]);
+	    ldac.populateVocab(fileList, args[0], args[1]);
+	    ldac.getMatrix(fileList, args[0], args[1], args[2]);
 	  }
 }
